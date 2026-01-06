@@ -1,20 +1,88 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Marhaba Haji - Umrah & Hajj Packages
 
-# Run and deploy your AI Studio app
+A modern travel platform for booking Umrah and Hajj pilgrimage packages, built with **Next.js 15**, **React 19**, and **Tailwind CSS**.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/drive/1sznirpBgqqZ9uR2N90GHlGJ6zIlT5mPv
+- 🕌 **Umrah Packages** - Group, Independent, and Build Your Own options
+- 🕋 **Hajj Packages** - Comprehensive Hajj travel services
+- 🏨 **Hotel Booking** - Premium accommodations near Masjid al-Haram
+- ✈️ **Visa Services** - Fast, secure visa processing with 99% approval rate
+- 📱 **Responsive Design** - Mobile-first, works on all devices
 
-## Run Locally
+## Tech Stack
 
-**Prerequisites:**  Node.js
+- **Framework**: Next.js 15 (App Router)
+- **React**: 19
+- **Styling**: Tailwind CSS 3.4
+- **Icons**: Lucide React
+- **Language**: TypeScript
 
+## Getting Started
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Prerequisites
+
+- Node.js 18.17 or later
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/supercx.git
+   cd supercx
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+```
+supercx/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx         # Root layout with fonts
+│   ├── page.tsx           # Home page (Umrah packages)
+│   ├── hajj/page.tsx      # Hajj packages page
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── Navbar.tsx
+│   ├── Hero.tsx
+│   ├── PackageSelection.tsx
+│   └── ...
+├── constants.ts           # Data and configuration
+├── types.ts              # TypeScript interfaces
+├── tailwind.config.ts    # Tailwind configuration
+└── vercel.json           # Vercel deployment config
+```
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Import the project in [Vercel](https://vercel.com)
+3. Vercel will automatically detect Next.js and deploy
+
+### Manual Build
+
+```bash
+npm run build
+npm start
+```
+
+## License
+
+MIT License - feel free to use this project for your own purposes.
+
+---
+
+**Powered by SuperCX Technologies**

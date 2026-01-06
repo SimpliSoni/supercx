@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { ShoppingCart, Menu, X, User } from 'lucide-react';
-import { NAV_LINKS } from '../constants';
+import Link from 'next/link';
+import { NAV_LINKS } from '@/constants';
 
 interface NavbarProps {
   activePage?: string;
-  onNavigate?: (pageId: string) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ activePage = 'hajj', onNavigate }) => {
+const Navbar: React.FC<NavbarProps> = ({ activePage = 'hajj' }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleNavClick = (e: React.MouseEvent, pageId: string) => {
-    e.preventDefault();
-    if (onNavigate) {
-      onNavigate(pageId);
-    }
-    setIsOpen(false);
+  // Map page IDs to routes
+  const getRoute = (pageId: string) => {
+    if (pageId === 'umrah') return '/';
+    if (pageId === 'hajj') return '/hajj';
+    return '#';
   };
 
   return (
@@ -23,35 +24,46 @@ const Navbar: React.FC<NavbarProps> = ({ activePage = 'hajj', onNavigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <div 
-            className="flex-shrink-0 flex items-center cursor-pointer" 
-            onClick={(e) => handleNavClick(e, 'hajj')}
-          >
+          <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer">
             <div className="w-12 h-12 rounded-full border-2 border-accent/80 flex items-center justify-center relative overflow-hidden group">
-               <span className="font-serif text-3xl font-bold text-accent italic relative z-10">M</span>
-               <div className="absolute top-0 right-0 text-accent/50">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-               </div>
+              <span className="font-serif text-3xl font-bold text-accent italic relative z-10">M</span>
+              <div className="absolute top-0 right-0 text-accent/50">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" /></svg>
+              </div>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden xl:flex items-center space-x-1">
             {NAV_LINKS.map((link) => {
               const isActive = activePage === link.id;
+              const route = getRoute(link.id);
+
+              if (route === '#') {
+                return (
+                  <span
+                    key={link.name}
+                    className={`text-sm font-medium transition-all px-4 py-2 rounded-full cursor-pointer ${isActive
+                        ? 'bg-white text-primary font-bold shadow-lg'
+                        : 'text-gray-200 hover:text-white hover:bg-white/10'
+                      }`}
+                  >
+                    {link.name}
+                  </span>
+                );
+              }
+
               return (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.id)}
-                  className={`text-sm font-medium transition-all px-4 py-2 rounded-full cursor-pointer ${
-                    isActive
-                      ? 'bg-white text-primary font-bold shadow-lg' 
+                  href={route}
+                  className={`text-sm font-medium transition-all px-4 py-2 rounded-full cursor-pointer ${isActive
+                      ? 'bg-white text-primary font-bold shadow-lg'
                       : 'text-gray-200 hover:text-white hover:bg-white/10'
-                  }`}
+                    }`}
                 >
                   {link.name}
-                </a>
+                </Link>
               );
             })}
           </div>
@@ -85,25 +97,39 @@ const Navbar: React.FC<NavbarProps> = ({ activePage = 'hajj', onNavigate }) => {
         <div className="md:hidden bg-[#02121d]/95 backdrop-blur-xl absolute w-full border-t border-white/10">
           <div className="px-4 pt-4 pb-8 space-y-2">
             {NAV_LINKS.map((link) => {
-               const isActive = activePage === link.id;
-               return (
-                <a
+              const isActive = activePage === link.id;
+              const route = getRoute(link.id);
+
+              if (route === '#') {
+                return (
+                  <span
+                    key={link.name}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-4 py-3 text-base font-medium rounded-xl cursor-pointer ${isActive ? 'bg-white text-primary' : 'text-gray-200 hover:bg-white/10'
+                      }`}
+                  >
+                    {link.name}
+                  </span>
+                );
+              }
+
+              return (
+                <Link
                   key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.id)}
-                  className={`block px-4 py-3 text-base font-medium rounded-xl ${
-                    isActive ? 'bg-white text-primary' : 'text-gray-200 hover:bg-white/10'
-                  }`}
+                  href={route}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-3 text-base font-medium rounded-xl ${isActive ? 'bg-white text-primary' : 'text-gray-200 hover:bg-white/10'
+                    }`}
                 >
                   {link.name}
-                </a>
+                </Link>
               );
             })}
             <div className="mt-6 flex flex-col space-y-3 px-2">
-               <button className="flex items-center justify-center gap-2 px-5 py-3 border border-white/30 rounded-xl text-base font-medium text-white">
-                  <User className="w-5 h-5" />
-                  <span>User Name</span>
-               </button>
+              <button className="flex items-center justify-center gap-2 px-5 py-3 border border-white/30 rounded-xl text-base font-medium text-white">
+                <User className="w-5 h-5" />
+                <span>User Name</span>
+              </button>
             </div>
           </div>
         </div>

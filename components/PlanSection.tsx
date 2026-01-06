@@ -1,4 +1,3 @@
-import React from 'react';
 import { Calendar, CreditCard, Ticket, Building } from 'lucide-react';
 
 const steps = [
@@ -33,7 +32,7 @@ const PlanSection: React.FC = () => {
     <section className="bg-[#fcf3eb] py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl font-serif text-primary mb-2 leading-tight">Plan Your Umrah & <br className="md:hidden"/> Hajj the Smart Way</h2>
+          <h2 className="text-3xl md:text-4xl font-serif text-primary mb-2 leading-tight">Plan Your Umrah & <br className="md:hidden" />Hajj the Smart Way</h2>
           <p className="text-gray-500 font-light text-sm md:text-base">Visa, Hotels, Flights, Ziyarats — All in One Islamic Travel App</p>
         </div>
 
@@ -50,9 +49,9 @@ const PlanSection: React.FC = () => {
         </div>
 
         <div className="flex justify-center">
-            <button className="bg-primary text-white px-8 py-4 rounded-xl font-medium text-sm md:text-lg hover:bg-secondary transition-colors w-full md:w-auto shadow-lg shadow-primary/20">
-                Start Building Your Umrah Package
-            </button>
+          <button className="bg-primary text-white px-8 py-4 rounded-xl font-medium text-sm md:text-lg hover:bg-secondary transition-colors w-full md:w-auto shadow-lg shadow-primary/20">
+            Start Building Your Umrah Package
+          </button>
         </div>
       </div>
     </section>
