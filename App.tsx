@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import PlanSection from './components/PlanSection';
@@ -12,20 +12,49 @@ import GuidesSection from './components/GuidesSection';
 import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 
+// New Components
+import PackageHero from './components/PackageHero';
+import PackageSelection from './components/PackageSelection';
+import WhyChooseSection from './components/WhyChooseSection';
+
 function App() {
+  // Simple state-based routing. Default to 'hajj' (Home) or 'umrah' (Packages)
+  const [activePage, setActivePage] = useState('umrah'); // Defaulting to 'umrah' to show the requested new page
+
+  const handleNavigation = (pageId: string) => {
+    setActivePage(pageId);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="font-sans antialiased bg-white text-gray-900">
-      <Navbar />
-      <Hero />
-      <PlanSection />
-      <ServicesSection />
-      <SpecialOffers />
-      <TrustedSection />
-      <FeaturedPackages />
-      <HotelServices />
-      <Testimonials />
-      <GuidesSection />
-      <FAQSection />
+      <Navbar activePage={activePage} onNavigate={handleNavigation} />
+      
+      {activePage === 'umrah' ? (
+        // Umrah Packages View (New)
+        <>
+          <PackageHero />
+          <PackageSelection />
+          <WhyChooseSection />
+          {/* We can optionally reuse other sections if needed, but the screenshot implies a focused landing page. 
+              I'll add the Footer which is common. */}
+        </>
+      ) : (
+        // Hajj Packages / Home View (Original)
+        <>
+          <Hero />
+          <PlanSection />
+          <ServicesSection />
+          <SpecialOffers />
+          <TrustedSection />
+          <FeaturedPackages />
+          <HotelServices />
+          <Testimonials />
+          <GuidesSection />
+          <FAQSection />
+        </>
+      )}
+
       <Footer />
     </div>
   );
