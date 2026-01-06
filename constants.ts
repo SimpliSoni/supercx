@@ -1,10 +1,10 @@
-import { 
-  Building2, 
-  Plane, 
-  FileText, 
-  UserCheck, 
-  Briefcase, 
-  MapPin, 
+import {
+  Building2,
+  Plane,
+  FileText,
+  UserCheck,
+  Briefcase,
+  MapPin,
   CreditCard,
   Calendar,
   Users,
@@ -16,6 +16,7 @@ import {
 import { Service, Package, Testimonial, FAQ, Hotel, Guide } from './types';
 
 export const NAV_LINKS = [
+  { name: 'Home', href: '#', id: 'home' },
   { name: 'Umrah Packages', href: '#', id: 'umrah' },
   { name: 'Hajj Packages', href: '#', id: 'hajj' },
   { name: 'Hotel', href: '#', id: 'hotel' },

@@ -14,8 +14,8 @@ const Navbar: React.FC<NavbarProps> = ({ activePage = 'hajj' }) => {
 
   // Map page IDs to routes
   const getRoute = (pageId: string) => {
-    if (pageId === 'umrah') return '/';
-    if (pageId === 'hajj') return '/hajj';
+    if (pageId === 'home') return '/';
+    if (pageId === 'umrah') return '/umrah';
     return '#';
   };
 
@@ -44,8 +44,8 @@ const Navbar: React.FC<NavbarProps> = ({ activePage = 'hajj' }) => {
                   <span
                     key={link.name}
                     className={`text-sm font-medium transition-all px-4 py-2 rounded-full cursor-pointer ${isActive
-                        ? 'bg-white text-primary font-bold shadow-lg'
-                        : 'text-gray-200 hover:text-white hover:bg-white/10'
+                      ? 'bg-white text-primary font-bold shadow-lg'
+                      : 'text-gray-200 hover:text-white hover:bg-white/10'
                       }`}
                   >
                     {link.name}
@@ -58,8 +58,8 @@ const Navbar: React.FC<NavbarProps> = ({ activePage = 'hajj' }) => {
                   key={link.name}
                   href={route}
                   className={`text-sm font-medium transition-all px-4 py-2 rounded-full cursor-pointer ${isActive
-                      ? 'bg-white text-primary font-bold shadow-lg'
-                      : 'text-gray-200 hover:text-white hover:bg-white/10'
+                    ? 'bg-white text-primary font-bold shadow-lg'
+                    : 'text-gray-200 hover:text-white hover:bg-white/10'
                     }`}
                 >
                   {link.name}
