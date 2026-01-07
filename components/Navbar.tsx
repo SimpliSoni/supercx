@@ -16,6 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({ activePage = 'hajj' }) => {
   const getRoute = (pageId: string) => {
     if (pageId === 'home') return '/';
     if (pageId === 'umrah') return '/umrah';
+    if (pageId === 'hajj') return '/hajj';
     return '#';
   };
 
