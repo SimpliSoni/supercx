@@ -13,7 +13,8 @@ export default function HajjPackageDetailsPage() {
             <PackageHero
                 title={<>Hajj 2025 Premium <span className="font-normal italic">Package</span></>}
                 subtitle="Embark on the spiritual journey of a lifetime with our carefully curated Hajj packages, designed to provide comfort, guidance, and peace of mind throughout your pilgrimage."
-                backgroundImage="https://images.unsplash.com/photo-1565552684383-7182b6b47c09?q=80&w=3540&auto=format&fit=crop"
+                backgroundImage="/hajj-hero-desktop.png"
+                mobileBackgroundImage="/hajj-hero-mobile.png"
             />
 
             {/* Main Content */}

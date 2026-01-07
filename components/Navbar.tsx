@@ -26,11 +26,8 @@ const Navbar: React.FC<NavbarProps> = ({ activePage = 'hajj' }) => {
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer">
-            <div className="w-12 h-12 rounded-full border-2 border-accent/80 flex items-center justify-center relative overflow-hidden group">
-              <span className="font-serif text-3xl font-bold text-accent italic relative z-10">M</span>
-              <div className="absolute top-0 right-0 text-accent/50">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" /></svg>
-              </div>
+            <div className="w-12 h-12 relative flex-shrink-0">
+              <img src="/logo.png" alt="Marhaba Haji" className="w-full h-full object-contain" />
             </div>
           </Link>
 

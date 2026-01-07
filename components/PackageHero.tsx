@@ -2,6 +2,7 @@ interface PackageHeroProps {
   title?: React.ReactNode;
   subtitle?: string;
   backgroundImage?: string;
+  mobileBackgroundImage?: string;
   isUmrah?: boolean;
 }
 
@@ -14,6 +15,7 @@ const PackageHero: React.FC<PackageHeroProps> = ({
   ),
   subtitle = "Select between our comprehensive group packages or create your own personalized pilgrimage experience",
   backgroundImage = "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=2670&auto=format&fit=crop",
+  mobileBackgroundImage,
 }) => {
   return (
     <div className="relative">
@@ -22,12 +24,31 @@ const PackageHero: React.FC<PackageHeroProps> = ({
       <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex flex-col justify-center items-center pt-24 pb-32 md:pt-28 md:pb-32 overflow-hidden bg-[#02121d] rounded-b-[40px] md:rounded-b-[60px] lg:rounded-b-none">
 
         {/* Background Image/Gradient */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-          style={{
-            backgroundImage: `url("${backgroundImage}")`,
-          }}
-        ></div>
+        {mobileBackgroundImage ? (
+          <>
+            {/* Mobile Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 md:hidden"
+              style={{
+                backgroundImage: `url("${mobileBackgroundImage}")`,
+              }}
+            ></div>
+            {/* Desktop Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 hidden md:block"
+              style={{
+                backgroundImage: `url("${backgroundImage}")`,
+              }}
+            ></div>
+          </>
+        ) : (
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+            style={{
+              backgroundImage: `url("${backgroundImage}")`,
+            }}
+          ></div>
+        )}
 
         {/* Dark Overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f2e2e]/90 via-[#02121d]/80 to-[#02121d]"></div>

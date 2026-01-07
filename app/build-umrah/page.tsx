@@ -28,6 +28,7 @@ export default function BuildUmrahPage() {
             <PackageHero
                 title={<>Build Your Umrah</>}
                 subtitle="Begin your spiritual journey with ease and confident"
+                backgroundImage="/build-umrah-hero.png"
             />
 
             {/* Steps Progress Bar */}

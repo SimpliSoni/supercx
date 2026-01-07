@@ -10,9 +10,8 @@ const Footer: React.FC = () => {
                     {/* Brand Column */}
                     <div className="lg:col-span-2 pr-0 lg:pr-8">
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="w-10 h-10 rounded-full border border-[#d4af37] flex items-center justify-center relative overflow-hidden shrink-0">
-                                <span className="font-serif text-2xl font-bold text-[#d4af37] italic relative z-10">M</span>
-                                {/* Optional subtle mosque silhouette could go here if needed, keeping it simple for now */}
+                            <div className="w-10 h-10 relative flex-shrink-0">
+                                <img src="/logo.png" alt="Marhaba Haji" className="w-full h-full object-contain" />
                             </div>
                             <span className="font-serif text-2xl font-normal text-white">
                                 Marhaba <span className="italic">Haji</span>
