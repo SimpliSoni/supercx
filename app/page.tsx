@@ -10,15 +10,34 @@ import Testimonials from '@/components/Testimonials';
 import GuidesSection from '@/components/GuidesSection';
 import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
+import connectToDatabase from '@/lib/mongodb';
+import Package from '@/models/Package';
 
-export default function Home() {
+async function getPackages() {
+    await connectToDatabase();
+    const packages = await Package.find({}).sort({ createdAt: -1 }).lean();
+    return packages.map((pkg: any) => ({
+        _id: pkg._id.toString(),
+        title: pkg.title,
+        description: pkg.description,
+        price: pkg.price,
+        oldPrice: pkg.oldPrice,
+        imageUrl: pkg.imageUrl,
+        slug: pkg.slug,
+    }));
+}
+
+export default async function Home() {
+    const packages = await getPackages();
     return (
         <>
             <Navbar activePage="home" />
             <Hero />
             <PlanSection />
             <ServicesSection />
-            <SpecialOffers />
+            <ServicesSection />
+            <SpecialOffers packages={packages} />
+            <TrustedSection />
             <TrustedSection />
             <FeaturedPackages />
             <HotelServices />
