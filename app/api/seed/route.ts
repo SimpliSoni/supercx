@@ -16,7 +16,7 @@ const packages = [
         description: "Affordable package with shifting hotel. Best for budget travelers.",
         price: 65000,
         oldPrice: 80000,
-        imageUrl: "/packages/economy.jpg",
+        imageUrl: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=2670&auto=format&fit=crop",
     },
     {
         title: "Ramadan Special Package",
