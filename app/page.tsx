@@ -13,6 +13,8 @@ import Footer from '@/components/Footer';
 import connectToDatabase from '@/lib/mongodb';
 import Package from '@/models/Package';
 
+export const dynamic = 'force-dynamic';
+
 async function getPackages() {
     await connectToDatabase();
     const packages = await Package.find({}).sort({ createdAt: -1 }).lean();
