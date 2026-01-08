@@ -4,7 +4,7 @@ import Package from "@/models/Package";
 
 export async function GET(
     request: Request,
-    { params }: { params: Promise<{ slug: string }> | { slug: string } }
+    { params }: { params: Promise<{ slug: string }> }
 ) {
     try {
         await connectToDatabase();
